@@ -5,10 +5,13 @@ ruby '2.7.1'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3'
-# Use sqlite3 as the database for Active Record
-gem 'sqlite3', '~> 1.4'
+
+# Use Postgres as the database for Active Record
+gem 'pg'
+
 # Use Puma as the app server
 gem 'puma', '~> 4.1'
+
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
@@ -25,14 +28,30 @@ gem 'bootsnap', '>= 1.4.2', require: false
 # Use Rack CORS for handling Cross-Origin Resource Sharing (CORS), making cross-origin AJAX possible
 # gem 'rack-cors'
 
+# Simple, efficient background processing for Ruby.
+gem 'sidekiq'
+
+# A micro library providing Ruby objects with Publish-Subscribe capabilities
+gem 'wisper', '2.0.0'
+gem 'wisper-activejob'
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
+  # Behaviour Driven Development for Ruby
   gem 'rspec-rails', '~> 4.0.0'
+
+  #Shim to load environment variables from .env into ENV
+  gem 'dotenv-rails', require: 'dotenv/rails-now'
+
+  # Manage Procfile-based applications
+  gem 'foreman'
 end
 
 group :development do
   gem 'listen', '~> 3.2'
+
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'spring'
   gem 'spring-watcher-listen', '~> 2.0.0'

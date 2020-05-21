@@ -1,6 +1,6 @@
 # README
 
-**Virtual Food Pantry** is a software engineer project for **[One Degree](https://www.1degree.org/)**. In case 
+**Virtual Food Pantry** is a software engineer project for **[One Degree](https://www.1degree.org/)**. When
 this gets fully implemented, it will improve food pantries' operations so that families have access to healthy food 
 from home.
 
@@ -26,17 +26,28 @@ try this command:
 
 In case there is any problem, we can follow the [RVM install guide](https://rvm.io/rvm/install).
 
-### SQLite
-**Virtual Food Pantry** will use [Postgres](https://www.postgresql.org/) on production, but since this is an exercise, 
-we are going to use [SQLite](https://www.sqlite.org/index.html) in development. Let's check if we have SQLite installed 
+### Postgres
+**Virtual Food Pantry** uses [Postgres](https://www.postgresql.org/). Let's check if we have Postgres installed 
 by running its version command: 
 
-```sqlite3 --version```
+```postgres --version```
 
-If we get an error, we can follow [these instructions](https://www.tutorialspoint.com/sqlite/sqlite_installation.htm) 
-to continue with the installation. Mac OS users can install SQLite via [Homebrew](https://brew.sh/):
+If we get an error, we can follow [these instructions](https://www.postgresql.org/download/) 
+to continue with the installation. Mac OS users can install and run Posgres via [Homebrew](https://brew.sh/):
 
-```brew install sqlite```
+```
+brew install postgresql
+brew services start postgres
+```
+
+### Redis
+Another key dependency is [Redis](https://redis.io/), which helps us to persist asynchronous jobs data and events. Please
+follow the [download instructions](https://redis.io/download). Mac OS users can use Homebrew:
+
+```bash
+brew install redis
+brew services run redis
+```
 
 ## Running the Application
 
@@ -48,7 +59,7 @@ and install [bundler](https://bundler.io/)(the Ruby package manager):
 
 ```gem install bundler```
 
-with the required gems:
+and then the required gems:
 
 ```bundle```
 
@@ -69,8 +80,4 @@ examples:
 
 Deployment is not yet part of this exercise, but we recommend deploying to [Heroku](https://www.heroku.com/) later on
 following this guide [Heroku guide](https://devcenter.heroku.com/articles/getting-started-with-ruby#introduction).
-
-## Author
-
-Copyright (c) 2020 [Mario Enrique Sanchez](https://www.linkedin.com/in/mario-enrique-s%C3%A1nchez-749a1a89/)
 

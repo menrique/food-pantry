@@ -19,6 +19,9 @@ require "rails/test_unit/railtie"
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
 
+# Making sure we load .env variables sooner enough
+Dotenv::Railtie.load if defined? Dotenv::Railtie
+
 module FoodPantry
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
@@ -33,5 +36,8 @@ module FoodPantry
     # Middleware like session, flash, cookies can be added back manually.
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
+
+    # Use Sidekiq as Active Job adapter
+    config.active_job.queue_adapter = :sidekiq
   end
 end
