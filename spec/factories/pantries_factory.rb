@@ -12,6 +12,8 @@ FactoryBot.define do
     email                { Faker::Internet.email }
 
     max_daily_bags       { Faker::Number.between(from:100, to: 5000) }
+    current              { Faker::Boolean.boolean }
+    status               { Pantry::STATUSES.keys.sample }
 
     trait :with_user do
       user { build :user, :valid }
@@ -31,6 +33,10 @@ FactoryBot.define do
 
     trait :with_households do
       households { build_list :households, 2, :valid }
+    end
+
+    trait :with_deliveries do
+      deliveries { build_list :deliveries, 2, :with_driver_shift, :with_driver, :with_household }
     end
 
     trait :valid do

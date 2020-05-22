@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe DeliveryWindow, type: :model do
   let(:subject) { build :delivery_window, :valid }
 

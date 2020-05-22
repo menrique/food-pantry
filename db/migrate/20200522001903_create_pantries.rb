@@ -11,8 +11,9 @@ class CreatePantries < ActiveRecord::Migration[6.0]
       t.string :zip_code
       t.string :phone
       t.string :email, null: false
-      t.integer :status, null: false, index: true, default: 0
       t.integer :max_daily_bags, null: false, default: 0
+      t.boolean :current, null: false, default: true
+      t.integer :status, null: false, index: true, default: 0
       t.references :user, null: false, foreign_key: true
 
       t.timestamps

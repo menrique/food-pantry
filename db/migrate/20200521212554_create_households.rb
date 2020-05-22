@@ -14,6 +14,7 @@ class CreateHouseholds < ActiveRecord::Migration[6.0]
       t.integer :size, null: false, default: 0
       t.decimal :income, null: false, precision: 8, scale: 2, default: 0
       t.boolean :accept_deliveries, null: false, default: true
+      t.boolean :current, null: false, default: true
       t.integer :status, null: false, index: true, default: 0
       t.references :user, null: false, foreign_key: true
       t.integer :pantry_id, index: true

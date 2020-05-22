@@ -1,18 +1,19 @@
-class PantryShift < ApplicationRecord
+class DriverShift < ApplicationRecord
   include Stateful
 
   # Mixins
   STATUSES = stateful [:scheduled, :started, :completed, :cancelled,]
 
   # Associations
-  belongs_to :pantry
-  has_many :driver_shifts
-  has_many :deliveries, through: :driver_shifts
+  belongs_to :driver
+  belongs_to :pantry_shift
+  has_many   :deliveries
 
-      # Validations
+  # Validations
   validates :date, presence: true
   validates :from, presence: true
   validates :to, presence: true
-  validates :pantry, presence: true
+  validates :driver, presence: true
+  validates :pantry_shift, presence: true
   validates :status, inclusion: { in: STATUSES.keys }
 end

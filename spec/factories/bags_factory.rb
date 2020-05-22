@@ -13,6 +13,10 @@ FactoryBot.define do
       pantry { build :pantry, :valid }
     end
 
+    trait :with_delivery do
+      delivery { build :delivery, :valid }
+    end
+
     trait :valid do
       with_pantry
       with_bag_type

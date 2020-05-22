@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Bag, type: :model do
   let(:subject) { build :bag, :valid }
 
@@ -13,6 +11,7 @@ RSpec.describe Bag, type: :model do
   # Associations
   it { should belong_to(:pantry) }
   it { should belong_to(:bag_type) }
+  it { should belong_to(:delivery) }
 
   # Validations
   it { should validate_presence_of(:pantry) }

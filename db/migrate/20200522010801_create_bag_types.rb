@@ -4,7 +4,7 @@ class CreateBagTypes < ActiveRecord::Migration[6.0]
       t.string :name, null: false
       t.string :description
       t.string :allergen
-      t.integer :dietary_restriction, null: false, default: 0
+      t.integer :dietary_restriction, null: false, index:true, default: 0
       t.references :pantry, null: false, foreign_key: true
 
       t.timestamps

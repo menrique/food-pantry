@@ -1,5 +1,3 @@
-require 'rails_helper'
-
 RSpec.describe Household, type: :model do
   let(:subject) { build :household, :valid }
 
@@ -20,6 +18,7 @@ RSpec.describe Household, type: :model do
   it { should respond_to(:size) }
   it { should respond_to(:income) }
   it { should respond_to(:accept_deliveries) }
+  it { should respond_to(:current) }
   it { should respond_to(:status) }
 
   # Associations
@@ -27,6 +26,7 @@ RSpec.describe Household, type: :model do
   it { should have_many(:dietary_restrictions) }
   it { should belong_to(:user) }
   it { should belong_to(:pantry) }
+  it { should have_many(:deliveries) }
 
   # Validations
   it { should validate_presence_of(:first_name) }
@@ -36,5 +36,6 @@ RSpec.describe Household, type: :model do
   it { should validate_numericality_of(:size).is_greater_than_or_equal_to(0) }
   it { should validate_numericality_of(:income).is_greater_than_or_equal_to(0) }
   it { should validate_inclusion_of(:accept_deliveries).in_array(BOOLEAN) }
+  it { should validate_inclusion_of(:current).in_array(BOOLEAN) }
   it { should define_enum_for(:status).with_values(described_class::STATUSES) }
 end

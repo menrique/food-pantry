@@ -9,6 +9,7 @@ class Bag < ApplicationRecord
   # Associations
   belongs_to :bag_type
   belongs_to :pantry
+  belongs_to :delivery
 
   # Validations
   validates :bag_type, presence: true

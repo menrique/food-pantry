@@ -25,6 +25,12 @@ RSpec.describe User, type: :model do
   it { should have_many(:user_roles) }
   it { should have_many(:roles).through(:user_roles) }
   it { should have_many(:households) }
+  it { should have_many(:pantries) }
+  it { should have_many(:driver_profiles) }
+  it { should have_one(:current_household).through(:households).conditions(current: true) }
+  it { should have_one(:current_pantry).through(:pantries).conditions(current: true) }
+  it { should have_one(:current_driver_profile).through(:driver_profiles).conditions(current: true) }
+  it { should have_one(:admin_profile) }
 
   # Validations
   it { should validate_presence_of(:email) }

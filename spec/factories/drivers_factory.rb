@@ -1,5 +1,5 @@
 FactoryBot.define do
-  factory :household do
+  factory :driver do
     first_name           { Faker::Name.first_name }
     middle_name          { Faker::Name.middle_name }
     last_name            { Faker::Name.last_name }
@@ -12,30 +12,27 @@ FactoryBot.define do
     phone                { Faker::PhoneNumber.cell_phone }
     email                { Faker::Internet.email }
 
-    size                 { Faker::Number.number }
-    income               { Faker::Number.between(from:10000, to: 50000) }
-    accept_deliveries    { Faker::Boolean.boolean }
     current              { Faker::Boolean.boolean }
-    status               { Household::STATUSES.keys.sample }
+    status               { Driver::STATUSES.keys.sample }
 
     trait :with_user do
       user { build :user, :valid }
-    end
-
-    trait :with_eligibility_applications do
-      eligibility_applications { build_list :eligibility_application, 2 }
-    end
-
-    trait :with_dietary_restrictions do
-      dietary_restrictions { build_list :dietary_restriction, 2 }
     end
 
     trait :with_pantry do
       pantry { build :pantry, :valid }
     end
 
+    trait :with_shifts do
+      shifts { build_list :driver_shift, 2, :valid }
+    end
+
+    trait :with_available_shifts do
+      available_shifts { build_list :available_driver_shift, 2, :valid }
+    end
+
     trait :with_deliveries do
-      deliveries { build_list :deliveries, 2, :with_driver_shift, :with_driver, :with_pantry }
+      deliveries { build_list :deliveries, 2, :with_driver_shift, :with_pantry, :with_household }
     end
 
     trait :valid do
