@@ -1,4 +1,4 @@
-# README
+# Software Engineering Project for One Degree
 
 **Virtual Food Pantry** is a software engineer project for **[One Degree](https://www.1degree.org/)**. When
 this gets fully implemented, it will improve food pantries' operations so that families have access to healthy food 

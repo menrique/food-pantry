@@ -16,6 +16,7 @@ gem 'puma', '~> 4.1'
 # gem 'jbuilder', '~> 2.7'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 4.0'
+
 # Use Active Model has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
@@ -35,18 +36,28 @@ gem 'sidekiq'
 gem 'wisper', '2.0.0'
 gem 'wisper-activejob'
 
+# Authentication/Authorization
+gem 'devise'
+gem 'devise-jwt', '~> 0.6.0'
+gem 'cancancan'
+
 group :development, :test do
-  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
-  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
-
-  # Behaviour Driven Development for Ruby
-  gem 'rspec-rails', '~> 4.0.0'
-
   #Shim to load environment variables from .env into ENV
   gem 'dotenv-rails', require: 'dotenv/rails-now'
 
+  # Call 'byebug' anywhere in the code to stop execution and get a debugger console
+  gem 'byebug', platforms: [:mri, :mingw, :x64_mingw]
+
   # Manage Procfile-based applications
   gem 'foreman'
+end
+
+group :test do
+  # Behaviour Driven Development for Ruby
+  gem 'rspec-rails', '~> 4.0.0'
+  gem 'factory_bot_rails'
+  gem 'faker'
+  gem 'shoulda-matchers'
 end
 
 group :development do

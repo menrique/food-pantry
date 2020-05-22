@@ -39,5 +39,15 @@ module FoodPantry
 
     # Use Sidekiq as Active Job adapter
     config.active_job.queue_adapter = :sidekiq
+
+    # Use rspec and factory bot
+    config.generators do |g|
+      g.test_framework :rspec
+      g.fixture_replacement :factory_bot, dir: './spec/factories'
+      g.factory_bot suffix: 'factory'
+    end
+
+    # https://blog.bigbinary.com/2016/02/15/rails-5-makes-belong-to-association-required-by-default.html
+    config.active_record.belongs_to_required_by_default = false
   end
 end
